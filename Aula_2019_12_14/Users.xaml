@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage Title="Users" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Aula_2019_12_14.Users">
     <StackLayout>
-        <SearchBar></SearchBar>
-        <ListView RowHeight="60" HasUnevenRows="True" ItemsSource="{Binding Items}" ItemTapped="Handle_ItemTapped" CachingStrategy="RecycleElement">
+        <SearchBar TextChanged="MudoOTexto" ></SearchBar>
+        <ListView HasUnevenRows="True" ItemsSource="{Binding Items}" ItemTapped="Handle_ItemTapped" CachingStrategy="RecycleElement">
             <!--Built in Cells-->
             <!--<ListView.ItemTemplate>
             <DataTemplate>
@@ -15,7 +15,10 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding Login}" FontSize="Caption" />
+                            <Image StyleClass="Circle"
+                                   WidthRequest="60" HeightRequest="60"
+                                   Source="{Binding AvatarUrl}"></Image>
+                            <Label Text="{Binding Login}" FontSize="Large" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

@@ -15,4 +15,7 @@
     <Folder Include="Models\" />
     <Folder Include="Services\" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Models\Search.cs" />
+  </ItemGroup>
 </Project>

@@ -31,21 +31,28 @@ namespace Aula_2019_12_14
             InitializeComponent();
         }
 
+        void MudoOTexto(SearchBar sender, TextChangedEventArgs e)
+        {
+            CarregarDados(e.NewTextValue);
+        }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-            CarregarDados();
         }
 
-        async Task CarregarDados()
+        async Task CarregarDados(string busca)
         {
-            var url = "https://api.github.com/users";
+            var url = "https://api.github.com/search/users?q=" + busca;
             var web = new HttpClientService();
             var json = await web.GetStringAsync(url);
-            var users = JsonConvert.DeserializeObject<List<User>>(json);
 
-            foreach (var user in users)
+            var s = new { Items = new List<User>() };
+            var users = JsonConvert.DeserializeAnonymousType(json, s);
+
+            Items.Clear();
+
+            foreach (var user in users.Items)
             {
                 Items.Add(user);
             }
