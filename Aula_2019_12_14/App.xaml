@@ -1,5 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="Aula_2019_12_14.App">
+<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="Aula_2019_12_14.App"
+    xmlns:light="clr-namespace:Xamarin.Forms.Themes;assembly=Xamarin.Forms.Theme.Light"
+
+             >
     <Application.Resources>
+        <ResourceDictionary MergedWith="light:LightThemeResources" />
+
+        <Style x:Key="Success"
+               TargetType="Button">
+            <Setter Property="TextColor"
+                    Value="Black" />
+            <Setter Property="FontSize"
+                    Value="30" />
+            <Setter Property="BackgroundColor"
+                    Value="Green" />
+        </Style>
     </Application.Resources>
 </Application>

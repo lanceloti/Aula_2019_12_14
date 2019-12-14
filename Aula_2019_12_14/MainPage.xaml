@@ -7,8 +7,8 @@
             <Entry Text="{Binding Senha}" Placeholder="Senha" IsPassword="True" ></Entry>
 
             <StackLayout Orientation="Horizontal">
-                <Button Command="{Binding LogarCommand}" BackgroundColor="Green" HorizontalOptions="FillAndExpand" Text="Entrar" ></Button>
-                <Button BackgroundColor="Orange" HorizontalOptions="FillAndExpand" Text="Cancelar"></Button>
+                <Button StyleClass="Success" HorizontalOptions="FillAndExpand" Command="{Binding LogarCommand}" Text="Entrar" ></Button>
+                <Button StyleClass="Warning"  HorizontalOptions="FillAndExpand" Text="Cancelar"></Button>
             </StackLayout>
         </StackLayout>
     </ScrollView>

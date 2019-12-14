@@ -23,6 +23,10 @@ namespace Aula_2019_12_14
             {
                 Padding = new Thickness(20, 60, 20, 20);
             }
+            else
+            {
+                Padding = new Thickness(20);
+            }
 
             BindingContext = this;
 
