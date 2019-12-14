@@ -58,6 +58,9 @@
     <PackageReference Include="Xamarin.Forms.Theme.Light">
       <Version>1.0.0.43-pre1</Version>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.3</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />

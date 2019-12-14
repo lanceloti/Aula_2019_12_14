@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
-
+using Aula_2019_12_14.Models;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,22 +15,37 @@ namespace Aula_2019_12_14
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Users : ContentPage
     {
-        public ObservableCollection<string> Items { get; set; }
+        public ObservableCollection<User> Items { get; set; }
 
         public Users()
         {
+            BindingContext = this;
+
+            Items = new ObservableCollection<User>();
+            //Items.Add(new User() { Login = "Lanceloti" });
+            //Items.Add(new User() { Login = "Lucas" });
+
             InitializeComponent();
+        }
 
-            Items = new ObservableCollection<string>
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            CarregarDados();
+        }
+
+        async Task CarregarDados()
+        {
+            var url = "https://api.github.com/users";
+            var web = new HttpClient();
+            var json = await web.GetStringAsync(url);
+            var users = JsonConvert.DeserializeObject<List<User>>(json);
+
+            foreach (var user in users)
             {
-                "Item 1",
-                "Item 2",
-                "Item 3",
-                "Item 4",
-                "Item 5"
-            };
-
-            MyListView.ItemsSource = Items;
+                Items.Add(user);
+            }
         }
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -35,10 +53,12 @@ namespace Aula_2019_12_14
             if (e.Item == null)
                 return;
 
-            await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
+            var user = (User)e.Item;
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
+
+            await Navigation.PushAsync(new Details(user));
         }
     }
 }

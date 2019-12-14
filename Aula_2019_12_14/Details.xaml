@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Aula_2019_12_14.Details">
+    <StackLayout>
+        <Image Source="{Binding User.AvatarUrl}"
+               Aspect="AspectFill"
+               HeightRequest="200"
+               ></Image>
+        <StackLayout Padding="10">
+            <Label Text="{Binding User.Login}"
+                   FontSize="Large"
+                   TextColor="Red"></Label>
+            <Label Text="{Binding User.Name}"
+                FontSize="Medium"></Label>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
